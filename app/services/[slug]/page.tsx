@@ -13,6 +13,17 @@ type ServicePageProps = {
   params: Promise<{ slug: string }>;
 };
 
+const serviceHeroImages: Record<string, string> = {
+  "tree-management-plans": "/tree-management-card.png",
+  "tree-pruning-and-structural-training": "/pruning-closeup.png",
+  "plant-health-care-programs": "/plant-health-care-card.png",
+  "tree-risk-assessment": "/tree-risk-assessment-card.png",
+  "tree-removal": "/tree-removal-card.png",
+  "root-zone-and-soil-management": "/root-zone-soil-card.png",
+  "emergency-tree-services": "/emergency-tree-services-card.png",
+  "consulting-and-expert-services": "/consulting-expert-services-card.png",
+};
+
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -41,28 +52,32 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
     notFound();
   }
 
+  const heroImage = serviceHeroImages[service.slug] ?? "/hero.png";
+
   return (
     <div className="site-shell page-content space-y-24">
       <PageHero
         label={service.kicker}
         title={service.title}
         description={service.intro}
-        image="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Canopy trees representing advanced arboriculture service"
+        image={heroImage}
+        imageAlt={`${service.title} service image`}
         primaryCta={{ href: "/contact", label: "Book Consultation" }}
         secondaryCta={{ href: "/services", label: "All Services" }}
       />
 
-      <section className="grid items-stretch gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <Reveal>
-          <SectionHeading label="Overview" title="What this service covers" description={service.overview} />
-          <p className="mt-7 rounded-2xl border border-[#34754C]/15 bg-white/75 p-5 text-sm leading-7 text-[#314439]">
-            {service.whyItMatters}
-          </p>
+      <section className="grid items-stretch gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
+        <Reveal className="h-full min-w-0">
+          <div className="flex h-full flex-col rounded-3xl border border-[#34754C]/16 bg-white/74 p-6 shadow-[0_20px_40px_rgba(16,34,22,0.08)]">
+            <SectionHeading label="Overview" title="What this service covers" description={service.overview} className="max-w-none" />
+            <p className="mt-7 rounded-2xl border border-[#34754C]/15 bg-[#EFE6DC]/66 p-5 text-sm leading-7 text-[#314439]">
+              {service.whyItMatters}
+            </p>
+          </div>
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="rounded-3xl border border-[#34754C]/16 bg-white/76 p-6 shadow-[0_20px_40px_rgba(16,34,22,0.08)]">
+        <Reveal delay={0.08} className="h-full min-w-0">
+          <div className="h-full rounded-3xl border border-[#34754C]/16 bg-white/76 p-6 shadow-[0_20px_40px_rgba(16,34,22,0.08)]">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#34754C]">What is included</p>
             <ul className="mt-4 grid gap-3 text-sm leading-6 text-[#2f4337]">
               {service.includes.map((item) => (
@@ -150,7 +165,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </Reveal>
       </section>
 
-      <section className="pb-2">
+      <section className="border-t border-[#34754C]/12 pt-5 pb-2">
         <Link href="/services" className="text-sm font-semibold text-[#2f6542] hover:underline">
           Back to all services
         </Link>
