@@ -150,9 +150,6 @@ export function SiteHeader() {
               <ButtonLink href="/contact" className="w-full bg-[#F9D619] text-[#102216] hover:bg-[#f0cf16]">
                 Book Consultation
               </ButtonLink>
-              <ButtonLink href="tel:+17075550112" variant="secondary" className="w-full text-[#EFE6DC] ring-white/35 hover:bg-white/10">
-                Emergency: (707) 555-0112
-              </ButtonLink>
             </div>
           </motion.div>
         ) : null}
