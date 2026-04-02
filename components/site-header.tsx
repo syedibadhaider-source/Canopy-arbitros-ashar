@@ -50,7 +50,7 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main Navigation">
+        <nav className="hidden items-center gap-6 xl:flex" aria-label="Main Navigation">
           {navItems.map((item) => {
             const active = pathname === item.href;
 
@@ -72,18 +72,21 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <a
             href="tel:+17075550112"
             className={cn(
-              "inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors",
+              "inline-flex items-center gap-2.5 rounded-full border px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] transition-colors xl:px-5",
               lightHeader
-                ? "border border-[#34754C]/25 text-[#244333] hover:bg-[#34754C]/8"
-                : "border border-white/25 text-[#EFE6DC] hover:bg-white/8",
+                ? "border-[#34754C]/25 bg-white/70 text-[#214534] hover:bg-white"
+                : "border-white/25 bg-white/10 text-[#EFE6DC] hover:bg-white/8",
             )}
           >
-            <Phone className="size-3.5" />
-            24/7 Emergency
+            <span className="ringing-phone-wrap">
+              <Phone className="ringing-phone size-4" />
+            </span>
+            <span className="font-heading text-base normal-case tracking-[0.02em]">(707) 555-0112</span>
+            <span className="text-[11px] tracking-[0.16em] text-current/85">24/7 Emergency</span>
           </a>
           <ButtonLink href="/contact" className="bg-[#F9D619] text-[#102216] hover:bg-[#f0cf16]">
             Book Consultation
@@ -95,7 +98,7 @@ export function SiteHeader() {
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           className={cn(
-            "inline-flex size-10 items-center justify-center rounded-full border transition-colors lg:hidden",
+            "inline-flex size-10 items-center justify-center rounded-full border transition-colors xl:hidden",
             lightHeader
               ? "border-[#34754C]/22 bg-white/65 text-[#1e372a] hover:bg-white/90"
               : "border-white/20 bg-white/10 text-[#EFE6DC] hover:bg-white/20",
@@ -112,7 +115,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="border-t border-white/15 bg-[#102216]/95 px-6 pb-6 pt-3 backdrop-blur-xl lg:hidden"
+            className="border-t border-white/15 bg-[#102216]/95 px-6 pb-6 pt-3 backdrop-blur-xl xl:hidden"
           >
             <nav className="grid gap-1" aria-label="Mobile Navigation">
               {navItems.map((item) => {
@@ -135,6 +138,15 @@ export function SiteHeader() {
             </nav>
 
             <div className="mt-5 grid gap-2">
+              <a
+                href="tel:+17075550112"
+                className="inline-flex items-center justify-center gap-2 font-heading rounded-xl border border-white/20 px-3 py-3 text-center text-xl tracking-[0.02em] text-[#F9D619]"
+              >
+                <span className="ringing-phone-wrap">
+                  <Phone className="ringing-phone size-5" />
+                </span>
+                (707) 555-0112
+              </a>
               <ButtonLink href="/contact" className="w-full bg-[#F9D619] text-[#102216] hover:bg-[#f0cf16]">
                 Book Consultation
               </ButtonLink>

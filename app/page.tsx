@@ -121,6 +121,16 @@ export default function Home() {
               </ButtonLink>
             </div>
 
+            <div className="space-y-2 rounded-2xl border border-white/20 bg-white/8 px-4 py-3 backdrop-blur-sm sm:w-fit">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#E2D3C0]">Immediate Support</p>
+              <a
+                href="tel:+17075550112"
+                className="font-heading block text-2xl leading-none text-[#F9D619] transition-colors hover:text-[#fff2a6] sm:text-3xl lg:text-4xl"
+              >
+                (707) 555-0112
+              </a>
+            </div>
+
             <div className="flex flex-wrap gap-2.5 pt-2">
               <span className="rounded-full border border-white/22 bg-white/7 px-3 py-1 text-xs font-medium text-[#EFE6DC]">
                 ISA Certified Arborist

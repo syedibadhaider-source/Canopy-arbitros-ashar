@@ -106,10 +106,70 @@ body {
   }
 }
 
+@keyframes phoneRing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(14deg);
+  }
+  24% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(10deg);
+  }
+  48% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes phonePulse {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.45;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
 .credentials-marquee-track {
   width: max-content;
   animation: credentialsMarqueeLtr 30s linear infinite;
   will-change: transform;
+}
+
+.ringing-phone-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringing-phone-wrap::after {
+  content: "";
+  position: absolute;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  opacity: 0.35;
+  animation: phonePulse 1.7s ease-out infinite;
+}
+
+.ringing-phone {
+  transform-origin: 72% 26%;
+  animation: phoneRing 1.45s ease-in-out infinite;
 }
 
 .credential-pill {
@@ -196,6 +256,11 @@ body {
   }
 
   .headline-highlight {
+    animation: none;
+  }
+
+  .ringing-phone-wrap::after,
+  .ringing-phone {
     animation: none;
   }
 

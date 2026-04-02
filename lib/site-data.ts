@@ -33,6 +33,7 @@ export const navItems: NavItem[] = [
   { label: "Services", href: "/services" },
   { label: "Areas We Serve", href: "/areas-we-serve" },
   { label: "Contact", href: "/contact" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const credentials = [
